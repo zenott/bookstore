@@ -4,10 +4,14 @@ import { connect } from 'react-redux';
 import { createBook } from '../actions';
 import CATEGORIES from '../constants/categories';
 
+const defaultForm = {
+  title: '',
+  category: '',
+};
+
 class BookForm extends React.Component {
   state = {
-    title: '',
-    category: '',
+    ...defaultForm,
   };
 
   handleChange = e => this.setState({ [e.target.id]: e.target.value });
@@ -17,6 +21,9 @@ class BookForm extends React.Component {
     const { title, category } = this.state;
     const { createBook } = this.props;
     createBook({ title, category });
+    this.setState({
+      ...defaultForm,
+    });
   };
 
   render() {

@@ -1,4 +1,6 @@
-import { CREATE_BOOK } from './actionTypes';
+import { CREATE_BOOK, REMOVE_BOOK } from './actionTypes';
+
+const generateID = () => Math.round(Math.random() * 1000000);
 
 export const createBook = ({ title, category }) => ({
   type: CREATE_BOOK,
@@ -9,4 +11,7 @@ export const createBook = ({ title, category }) => ({
   },
 });
 
-const generateID = () => Math.round(Math.random() * 1000000);
+export const removeBook = id => ({
+  type: REMOVE_BOOK,
+  id,
+});
