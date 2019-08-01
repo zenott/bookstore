@@ -1,14 +1,11 @@
 import { CREATE_BOOK, REMOVE_BOOK } from '../actions/actionTypes';
 
-const initialState = [];
-
-export default function(state = initialState, action) {
+export default function(state = [], action) {
   switch (action.type) {
     case CREATE_BOOK:
-      return { ...state, books: [...state.books, action.payload.book] };
+      return [...state, action.book];
     case REMOVE_BOOK: {
-      const newBooks = state.books.filter(b => b.id !== action.payload.id);
-      return { ...state, books: newBooks };
+      return state.filter(book => book.id !== action.id);
     }
     default:
       return state;
