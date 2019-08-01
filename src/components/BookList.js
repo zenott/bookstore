@@ -6,10 +6,10 @@ import Book from './Book';
 import CategoryFilter from './CategoryFilter';
 import CATEGORIES from '../constants/categories';
 
-const BookList = ({ books, removeBook, currFilter, changeFilter }) => {
+const BookList = ({ books, removeBook, filter, changeFilter }) => {
   return (
     <>
-      <CategoryFilter currFilter={currFilter} changeFilter={changeFilter} />
+      <CategoryFilter filter={filter} changeFilter={changeFilter} />
       <table>
         <tbody>
           {books.map(book => (
@@ -30,14 +30,17 @@ BookList.propTypes = {
     })
   ).isRequired,
   removeBook: PropTypes.func.isRequired,
-  currFilter: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  books: state.books,
-  currFilter: state.filter,
-});
+const mapStateToProps = ({ books, filter }) => {
+  const categoryFilter = b => filter === 'All' || filter === b.category;
+  return {
+    books: books.filter(categoryFilter),
+    filter,
+  };
+};
 
 export default connect(
   mapStateToProps,

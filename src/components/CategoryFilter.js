@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CATEGORIES from '../constants/categories';
 
-const CategoryFilter = ({ currFilter, changeFilter }) => {
+const CategoryFilter = ({ filter, changeFilter }) => {
   return (
-    <select value={currFilter} onChange={changeFilter}>
+    <select value={filter} onChange={changeFilter}>
       {['All', ...CATEGORIES].map(cat => (
         <option value={cat} key={cat}>
           {cat}
@@ -15,7 +15,7 @@ const CategoryFilter = ({ currFilter, changeFilter }) => {
 };
 
 CategoryFilter.propTypes = {
-  currFilter: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
 };
 
