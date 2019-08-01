@@ -1,4 +1,4 @@
-import { CREATE_BOOK, REMOVE_BOOK } from './actionTypes';
+import { CREATE_BOOK, REMOVE_BOOK, CHANGE_FILTER } from './actionTypes';
 
 const generateID = () => Math.round(Math.random() * 1000000);
 
@@ -14,4 +14,9 @@ export const createBook = ({ title, category }) => ({
 export const removeBook = id => ({
   type: REMOVE_BOOK,
   id,
+});
+
+export const changeFilter = filter => ({
+  type: CHANGE_FILTER,
+  filter,
 });

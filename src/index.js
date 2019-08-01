@@ -9,6 +9,7 @@ import './index.css';
 
 const initialState = {
   books: initialBooks,
+  filter: 'All',
 };
 
 const store = createStore(
