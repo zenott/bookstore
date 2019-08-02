@@ -36,8 +36,9 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "react/no-unused-state": 1,
-    "consistent-return": 0,
-    "no-shadow": 0
+    "react/no-unused-state": "warn",
+    "consistent-return": "off",
+    "no-shadow": "off",
+    "no-underscore-dangle": "off"
   }
 }

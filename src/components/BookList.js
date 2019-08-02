@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeBook } from '../actions';
+import { removeBook, changeFilter } from '../redux/actions';
 import Book from './Book';
+import CategoryFilter from './CategoryFilter';
 import CATEGORIES from '../constants/categories';
 
-const BookList = ({ books, removeBook }) => {
+const BookList = ({ books, removeBook, filter, changeFilter }) => {
   return (
-    <table>
-      <tbody>
-        {books.map(book => (
-          <Book key={book.id} book={book} removeBook={removeBook} />
-        ))}
-      </tbody>
-    </table>
+    <>
+      <CategoryFilter filter={filter} changeFilter={changeFilter} />
+      <table>
+        <tbody>
+          {books.map(book => (
+            <Book key={book.id} book={book} removeBook={removeBook} />
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 
@@ -26,11 +30,19 @@ BookList.propTypes = {
     })
   ).isRequired,
   removeBook: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  changeFilter: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ books: state.books });
+const mapStateToProps = ({ books, filter }) => {
+  const categoryFilter = b => filter === 'All' || filter === b.category;
+  return {
+    books: books.filter(categoryFilter),
+    filter,
+  };
+};
 
 export default connect(
   mapStateToProps,
-  { removeBook }
+  { removeBook, changeFilter }
 )(BookList);
