@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createBook } from '../actions';
+import { createBook } from '../redux/actions';
 import CATEGORIES from '../constants/categories';
 
 const defaultForm = {
