@@ -1,0 +1,25 @@
+.header {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  border-bottom: solid 1px #e8e8e8;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #0290ff;
+}
+
+.books,
+.cat {
+  font-size: 13px;
+  letter-spacing: 1.9px;
+  color: #121212;
+  margin-left: 35px;
+}
+
+.cat {
+  opacity: 0.5;
+}
