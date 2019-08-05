@@ -5,18 +5,17 @@ import { removeBook, changeFilter } from '../redux/actions';
 import Book from './Book';
 import CategoryFilter from './CategoryFilter';
 import CATEGORIES from '../constants/categories';
+import styles from './BookList.module.css';
 
 const BookList = ({ books, removeBook, filter, changeFilter }) => {
   return (
     <>
       <CategoryFilter filter={filter} changeFilter={changeFilter} />
-      <table>
-        <tbody>
-          {books.map(book => (
-            <Book key={book.id} book={book} removeBook={removeBook} />
-          ))}
-        </tbody>
-      </table>
+      <div className={styles['books-container']}>
+        {books.map(book => (
+          <Book key={book.id} book={book} removeBook={removeBook} />
+        ))}
+      </div>
     </>
   );
 };
