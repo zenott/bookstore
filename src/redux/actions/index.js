@@ -7,16 +7,16 @@ export const createBook = ({ title, category }) => ({
   book: {
     id: generateID(),
     title,
-    category,
-  },
+    category
+  }
 });
 
 export const removeBook = id => ({
   type: REMOVE_BOOK,
-  id,
+  id
 });
 
 export const changeFilter = e => ({
   type: CHANGE_FILTER,
-  filter: e.target.value,
+  filter: e.target.value
 });

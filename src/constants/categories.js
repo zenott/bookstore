@@ -5,5 +5,5 @@ export default Object.freeze([
   'Horror',
   'Kids',
   'Learning',
-  'Sci-Fi',
+  'Sci-Fi'
 ]);

@@ -4,7 +4,7 @@ import initialBooks from '../constants/initialBooks';
 
 const initialState = {
   books: initialBooks,
-  filter: 'All',
+  filter: 'All'
 };
 
 const store = createStore(
