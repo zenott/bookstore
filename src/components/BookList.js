@@ -7,12 +7,14 @@ import CategoryFilter from './CategoryFilter';
 import CATEGORIES from '../constants/categories';
 import styles from './BookList.module.css';
 
-const BookList = ({  books,removeBook, filter, changeFilter}) => (
+const BookList = ({
+  books, removeBook, filter, changeFilter,
+}) => (
   <>
     <CategoryFilter filter={filter} changeFilter={changeFilter} />
     <div className={styles['books-container']}>
       {books.map(book => (
-        <Book book={book} removeBook={removeBook} />
+        <Book key={book.id} book={book} removeBook={removeBook} />
       ))}
     </div>
   </>
@@ -26,6 +28,7 @@ BookList.propTypes = {
       category: PropTypes.oneOf(CATEGORIES).isRequired,
     }),
   ).isRequired,
+  removeBook: PropTypes.string.isRequired,
   filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
 };
