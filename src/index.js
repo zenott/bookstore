@@ -5,9 +5,9 @@ import store from './redux/store';
 import App from './components/App';
 import './global.css';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Provider store={store}>
+  <App />
+
+
+                  </Provider>,
+document.getElementById('root'));

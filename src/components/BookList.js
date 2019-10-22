@@ -7,18 +7,16 @@ import CategoryFilter from './CategoryFilter';
 import CATEGORIES from '../constants/categories';
 import styles from './BookList.module.css';
 
-const BookList = ({ books, removeBook, filter, changeFilter }) => {
-  return (
-    <>
-      <CategoryFilter filter={filter} changeFilter={changeFilter} />
-      <div className={styles['books-container']}>
-        {books.map(book => (
-          <Book key={book.id} book={book} removeBook={removeBook} />
-        ))}
-      </div>
-    </>
-  );
-};
+const BookList = ({  books,removeBook, filter, changeFilter}) => (
+  <>
+    <CategoryFilter filter={filter} changeFilter={changeFilter} />
+    <div className={styles['books-container']}>
+      {books.map(book => (
+        <Book book={book} removeBook={removeBook} />
+      ))}
+    </div>
+  </>
+);
 
 BookList.propTypes = {
   books: PropTypes.arrayOf(
@@ -26,9 +24,8 @@ BookList.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       category: PropTypes.oneOf(CATEGORIES).isRequired,
-    })
+    }),
   ).isRequired,
-  removeBook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
 };
@@ -43,5 +40,5 @@ const mapStateToProps = ({ books, filter }) => {
 
 export default connect(
   mapStateToProps,
-  { removeBook, changeFilter }
+  { removeBook, changeFilter },
 )(BookList);
